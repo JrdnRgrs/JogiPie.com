@@ -1,0 +1,132 @@
+<!doctype html> 
+<html> 
+	<head> 
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta property="og:title" content="JogiPie's Vinyl Stream" />
+		<meta property="og:image" content="/img/jogi.png" />
+		<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?">
+		<title>JogiPie.com</title> 
+		<link rel="image_src" href="/img/jogi.png">
+		<meta name="description" content="JogiPie's Stream"> 
+		<meta name="keywords" content="JogiPie Vinyl stream"> <source src="rtmp://rtmp.jogipie.com/live/jogi" type='rtmp/mp4'> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+		<link href="https://vjs.zencdn.net/5.10.7/video-js.css" rel="stylesheet">
+		<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="/js/stats.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script><style></style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/dg.css">
+	</head>
+
+	<body>
+		<script type="text/javascript" src="https://hosted.muses.org/mrp.js"></script>
+		<h1><span style="text-decoration: underline;">JogiPie's Live Turntable Stream</span></h1>
+		<p>This audio is being supplied LIVE from my turntable in my room!</p> 
+		<p>If you can hear it, then I am currently listening to a record!</p>
+		<script type="text/javascript">
+			MRP.insert({
+				'url':'http://totripto.com:8000/turntable.mp3',
+				'codec':'mp3',
+				'volume':100,
+				'autoplay':true,
+				'buffering':10,
+				'title':'Turntable',
+				'bgcolor':'#FFFFFF',
+				'skin':'cassette',
+				'width':200, 'height':120
+			});
+		</script>
+		<p>(Press play if music says "off" and/or doesn't start playing after about 5 seconds)</p>
+		<p><b>Listeners:</b> <span id="listeners">1</span></p>
+                <p><b>Bitrate:</b> <span id="bitrate">256</span>kbps</p>
+		<br>
+		<br>
+		<br>
+		<p>If the yellow player is laggy, try this one</p>
+		<audio controls>
+			<source src="http://totripto.com:8000/turntable.mp3" />
+		</audio>
+
+
+		<div data-role="main" class="ui-content">
+			<div data-role="collapsible">
+				<h1>JogiPie's Live Video Stream</h1>
+				<p>This video feed is streamed from my PC via OBS.</p>
+				<p>It is only on when I am not feeling lazy</p>
+				<video autoplay id="my-video" class="video-js" controls preload="auto" width="640" height="360" poster="/img/background.jpg" data-setup="{}">
+					<source src="rtmp://ec2-34-203-196-225.compute-1.amazonaws.com/live/jogi" type='rtmp/mp4'>
+						<p class="vjs-no-js">
+							To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+						</p>
+				</video>
+				<script src="https://vjs.zencdn.net/5.10.7/video.js"></script>
+			</div>
+		</div>
+		<div class="container fade-in">
+			<div class="row mt-4">
+				<div class="col-12 discogs-wrap">
+					<p><strong>JogiPie's Record Collection</strong>&nbsp;&nbsp;<a href="https://www.discogs.com/developers/" target="_blank"><span class="text-grey">via Discogs api</span></a></p>
+					<div class="table-responsive">
+						<table class="table discogs-table">
+							<thead>
+								<tr>
+								<th>Artist</th>
+								<th>Title</th>
+								<th class="hidden-xs">Label</th>
+								<th class="text-center hidden-xs"><i class="fa fa-headphones"></i></th>
+								<th class="text-center"><i class="fa fa-calendar-o "></i></th>
+								</tr>
+							</thead>
+							<tbody id="discogs-collection">
+							  <tr class="discogs-spinner"><td><i class="fa fa-hand-peace-o fa-spin fa-3x "></i></td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+		  $("#nav-about").addClass("active");
+		  $(".discogs-spinner").show();
+		  jQuery.getJSON("https://api.discogs.com/users/JrdnRgrs/collection/folders/0/releases?callback=&sort=artist&sort_order=asc&per_page=1000", function(data) {
+			$(".discogs-spinner").hide();
+			if (data.pagination.items > 1) {
+			  $.each(data.releases, function(i,release){
+				content =
+				'<tr class="discogs-link" data-href="https://www.discogs.com/release/'+release.basic_information.id+'"><td>'+release.basic_information.artists[0].name+'</td><td>'+release.basic_information.title+'</td><td class="hidden-xs">'+release.basic_information.labels[0].name+'</td><td class="text-center hidden-xs">'+release.basic_information.formats[0].descriptions[0]+'</td><td class="text-center">'+release.basic_information.year+'</td></tr>';
+				$(content).appendTo("#discogs-collection");
+			  });
+			  $(".discogs-link").click(function() {
+				window.open($(this).data("href"));
+			  });
+			}
+			else{
+			  $("#discogs-collection").append("<tr class='discogs-error'><td>Error! Something is up with the Discogs API.</td></tr>");
+			}
+		  });
+		});
+		</script>
+		<footer>
+			<div class="container">
+				<div class="row mt-2 mb-2 py-4 my-sm-4 py-sm-4">
+					<div class="col-6 col-sm-6 col-md-8 ">
+						© 2018<br>					
+
+					</div>
+				</div>
+			</div>
+		</footer>
+		<span id="sbmarwbthv5">
+		</span>
+	</body>
+</html>
