@@ -70,7 +70,7 @@
 		request.send();
 		request.onload = function() {
 		  const auDinfo = request.response;
-					document.getElementById("demo").innerHTML = "Now Playing: " + auDinfo.result.title + " by " + auDinfo.result.artist + " from " + auDinfo.result.album;
+					document.getElementById("np").innerHTML = "Now Playing: " + auDinfo.result.title + " by " + auDinfo.result.artist + " from " + auDinfo.result.album;
 			}
 			
 		</script>
