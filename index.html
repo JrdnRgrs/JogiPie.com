@@ -59,7 +59,7 @@
 		<audio controls>
 			<source src="http://turntable.jogipie.com" />
 		</audio>
-		<p id="np"></p>
+		<p id="demo"></p>
 		<script>
 		const header = document.querySelector('header');
 		const section = document.querySelector('section');
@@ -70,7 +70,7 @@
 		request.send();
 		request.onload = function() {
 		  const auDinfo = request.response;
-					document.getElementById("np").innerHTML = "Now Playing: " + auDinfo.result.title + " by " + auDinfo.result.artist + " from " + auDinfo.result.album;
+					document.getElementById("demo").innerHTML = "Now Playing: " + auDinfo.result.title + " by " + auDinfo.result.artist + " from " + auDinfo.result.album;
 			}
 			
 		</script>
